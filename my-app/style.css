@@ -78,9 +78,11 @@ h1 {
   font-size: 1rem;
   font-weight: bolder;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 8em);
   grid-template-rows: 1fr 1fr;
   row-gap: 1.5em;
+  -moz-column-gap: 4em;
+       column-gap: 4em;
   justify-content: center;
 }
 @media (max-width: 990px) {
@@ -113,7 +115,7 @@ h1 {
 }
 @media (max-width: 550px) {
   .countdown > article {
-    scale: 1.1;
+    scale: 1.2;
   }
 }
 .countdown > article::before, .countdown > article::after {
