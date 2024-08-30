@@ -1,0 +1,207 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap");
+$primary: hsl(237, 18%, 59%); // Grayish blue
+$soft-red: hsl(345, 95%, 68%);
+$soft-dark-red: rgb(33, 28, 44);
+$white: hsl(0, 0%, 100%);
+$dark-blue: hsl(236, 21%, 26%); // Dark desaturated blue
+$medium-dark-blue: hsl(236, 21%, 19%); // Dark desaturated blue
+$very-dark-blue: hsl(235, 16%, 14%);
+$very-dark-blue-alt: hsl(234, 17%, 12%); // Very dark (mostly black) blue
+// $p-inline: 2re;
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Red Hat Text", sans-serif;
+  height: 100vh;
+  height: 100dvh;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  color: $white;
+  background: url("../images/pattern-hills.svg") bottom/contain no-repeat,
+    url("../images/bg-stars.svg") center/contain no-repeat,
+    linear-gradient(
+      $very-dark-blue-alt 0,
+      $very-dark-blue-alt 10%,
+      $soft-dark-red,
+      $very-dark-blue
+    );
+  @media (max-width: 990px) {
+    background-size: 190%;
+  }
+  @media (max-width: 700px) {
+    background-size: 200%;
+  }
+  @media (max-width: 550px) {
+    background-size: 400%;
+    background-position: bottom right;
+  }
+}
+// Container
+.container {
+  margin-inline: 40px;
+  max-width: 1200px;
+  width: 100%;
+  @media (max-width: 1200px) {
+    margin-inline: 30px;
+    max-width: 980px;
+  }
+  @media (max-width: 990px) {
+    margin-inline: 0px;
+  }
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 300;
+  padding-block: 5em 3em;
+  @media (max-width: 700px) {
+    font-size: 1.5rem;
+    padding-block: 6em 4em;
+  }
+}
+
+.social-media {
+  position: absolute;
+  bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  a:hover,
+  a:focus {
+    img {
+      filter: hue-rotate(45deg);
+    }
+  }
+}
+
+// CountDown
+.countdown {
+  margin-inline: auto;
+  font-size: 1rem;
+  font-weight: bolder;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr;
+  row-gap: 1.5em;
+  justify-content: center;
+  @media (max-width: 990px) {
+    font-size: 0.9rem;
+  }
+  @media (max-width: 700px) {
+    font-size: 0.7rem;
+  }
+  @media (max-width: 550px) {
+    font-size: 0.45rem;
+    row-gap: 3em;
+  }
+}
+.countdown > article {
+  position: relative;
+  margin-inline: auto;
+  border-radius: 0.1em;
+  width: 100%;
+  max-width: 1.8em;
+  font-size: 5em;
+  color: $soft-red;
+  box-shadow: 0 10px $very-dark-blue-alt;
+  overflow: hidden;
+  @media (max-width: 550px) {
+    scale: 1.1;
+  }
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    background-color: $very-dark-blue-alt;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    z-index: 100;
+  }
+  &::before {
+    left: 0%;
+    transform: translate(calc(-100% + 5px), -50%);
+  }
+  &::after {
+    right: 0%;
+    transform: translate(calc(100% - 5px), -50%);
+  }
+}
+
+.text {
+  color: $primary;
+  font-weight: 500;
+  margin-inline: auto;
+  font-size: clamp(0.6rem, 1.5vw, 1rem);
+}
+
+.top,
+.bottom,
+.top-added,
+.bottom-added {
+  overflow: hidden;
+  height: 0.7em;
+  display: flex;
+  justify-content: center;
+}
+.top,
+.top-added {
+  line-height: 1.4;
+  background-color: $medium-dark-blue;
+  border-bottom: 1px solid $very-dark-blue-alt;
+  transform-origin: bottom;
+}
+.bottom,
+.bottom-added {
+  line-height: 0;
+  background-color: $dark-blue;
+  transform-origin: top;
+}
+.top-added,
+.bottom-added {
+  position: absolute;
+  height: 50%;
+  left: 0;
+  right: 0;
+}
+.top-added {
+  top: -1px;
+}
+.bottom-added {
+  bottom: 0px;
+}
+
+.flip-top {
+  animation: top-flip 0.5s forwards;
+}
+
+.flip-bottom {
+  animation: bottom-flip 0.5s forwards 0.45s;
+  transform: rotateX(90deg) rotateY(10deg);
+}
+
+@keyframes top-flip {
+  0% {
+    transform: rotateX(0);
+  }
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+
+@keyframes bottom-flip {
+  0% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
