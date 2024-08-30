@@ -12,11 +12,12 @@ const secondsTop = document.querySelector("[data-top-seconds]");
 const secondsBottom = document.querySelector("[data-bottom-seconds]");
 
 let number = 0;
-
-setInterval(() => {
-  currentDate = new Date().getTime();
-  const dateGap = Math.floor((endDate - currentDate) / 1000);
-  updateTime(dateGap);
+setTimeout(() => {
+  setInterval(() => {
+    currentDate = new Date().getTime();
+    const dateGap = Math.floor((endDate - currentDate) / 1000);
+    updateTime(dateGap);
+  }, 1000);
 }, 1000);
 const updateTime = (time) => {
   const seconds = time;
